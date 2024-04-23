@@ -1,11 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import sys
 import random
+import sys
 from msilib.schema import Font
 
 import pygame.display
-from pygame import Surface
 from pygame import Surface, Rect
 
 from code.Enemy import Enemy
@@ -13,9 +12,10 @@ from code.Entity import Entity
 from code.EntityMediator import EntityMediator
 from code.Entityfactory import Entityfactory
 from code.Player import Player
-from code.const import MENU_OPTION, EVENT_ENEMY, COLOR_WHITE
+from code.const import MENU_OPTION, EVENT_ENEMY, C_WHITE, WIN_HEIGHT, C_GREEN, C_CYAN
 
 
+# noinspection PyTypeChecker
 class Level:
     def __init__(self, window, name, menu_option):
         self.window: Surface = window
@@ -43,10 +43,14 @@ class Level:
                     shoot = ent.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
+                if ent.name == 'Player1':
+                    self.level_text(14, f'Player1 - Health: {ent.health} | Score: {ent.score}', C_GREEN, (10, 25))
+                if ent.name == 'Player2':
+                    self.level_text(14, f'Player2 - Health: {ent.health} | Score: {ent.score}', C_CYAN, (10, 45))
 
-            # texto a ser printado na tela
-            self.level_text(14, f'fps:{clock.get_fps() :.0f}', COLOR_WHITE, (10, 10))
-            self.level_text(14, f'entidades:{len(self.entity_list)}', COLOR_WHITE, (10, 25))
+            # texto a ser exibido na tela
+            self.level_text(14, f'fps:{clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(14, f'entidades:{len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
             # Atualizar tela
             pygame.display.flip()
 
@@ -72,5 +76,6 @@ class Level:
     pass
 
 
+# noinspection PyShadowingNames,PyUnusedLocal
 def level_text(self, param, param1, COLOR_WHITE, param2):
     pass

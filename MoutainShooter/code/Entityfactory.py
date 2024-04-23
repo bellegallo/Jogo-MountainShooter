@@ -8,6 +8,7 @@ from code.Player import Player
 from code.const import WIN_WIDTH, WIN_HEIGHT
 
 
+# noinspection PyUnusedLocal
 class Entityfactory:
 
     @staticmethod
@@ -30,4 +31,4 @@ class Entityfactory:
                 return Enemy('Enemy1', (WIN_WIDTH + 10, random.randint(0 + 40, WIN_HEIGHT - 40)))
 
             case 'Enemy2':
-                return Enemy('Enemy2', (WIN_WIDTH + 10, random.randint(0 + 40, WIN_HEIGHT -40)))
+                return Enemy('Enemy2', (WIN_WIDTH + 10, random.randint(0 + 40, WIN_HEIGHT - 40)))
