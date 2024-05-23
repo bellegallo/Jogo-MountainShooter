@@ -8,7 +8,6 @@ from code.Player import Player
 from code.const import WIN_WIDTH, WIN_HEIGHT
 
 
-# noinspection PyUnusedLocal
 class Entityfactory:
 
     @staticmethod
@@ -16,9 +15,16 @@ class Entityfactory:
         match entity_name:
             case 'Level1BG':
                 list_bg = []
-                for i in range(5):
+                for i in range(5):  # número de sprites que compõem esse mapa
                     list_bg.append(Background(f'Level1BG{i}', (0, 0)))
                     list_bg.append(Background(f'Level1BG{i}', (WIN_WIDTH, 0)))
+                return list_bg
+
+            case 'Level2BG':
+                list_bg = []
+                for i in range(5):
+                    list_bg.append(Background(f'Level2BG{i}', (0, 0)))
+                    list_bg.append(Background(f'Level2BG{i}', (WIN_WIDTH, 0)))
                 return list_bg
 
             case 'Player1':
